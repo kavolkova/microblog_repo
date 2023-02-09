@@ -16,3 +16,9 @@ def index():
         }
     ]
     return render_template('index.html', title='Home', user=user, posts=posts)
+
+@app.route('/songs')
+def songChallenge():
+    user = {'username': 'Miguel'}
+    posts = [{'title': 'Back in the USSR','artist': 'The Beatles'}, {'title': 'Billy Jean','artist': 'Michael Jackson'}]
+    return render_template('songs.html', title = "song list!", user = user, posts = posts)
