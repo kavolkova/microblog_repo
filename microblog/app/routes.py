@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for
 from app import app
-from app.forms import LoginForm
+from app.forms import LoginForm, WillowLoginForm
 
 @app.route('/')
 @app.route('/index')
@@ -32,3 +32,21 @@ def login():
             form.username.data, form.remember_me.data))
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
+
+@app.route('/willowlogin', methods=['GET', 'POST'])
+def willowlogin():
+    form = WillowLoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect(url_for('willow'))
+    return render_template('houselogin.html', title='Willow Sign In', form=form)
+
+@app.route('/willow')
+def willow():
+    user = {'username': 'Miguel'}
+    houses = [{'address': '2 River Terrace','sqft': '3490'}, {'address': '23 Greenwood Plaza','sqft': '2300'}]
+    return render_template('houses.html', title = "willow homepage", user = user, houses = houses)
+# @app.route('houses', methods=['GET', 'POST'])
+# def willow():
+#     user = {'username': 'Miguel'}

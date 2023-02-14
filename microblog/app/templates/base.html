@@ -8,8 +8,8 @@
       {% endif %}
     </head>
     <body>
-        <div><a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('songChallenge') }}">songs</a> <a href="{{ url_for('login') }}">login</a></div>
+        <!-- <div> <a href="{{ url_for('index') }}">Home</a> -->
+        <div><a href="{{ url_for('songChallenge') }}">songs</a> <a href="{{ url_for('login') }}"> microblog login</a> <a href="{{ url_for('willowlogin') }}"> willow login</a></div>
         <hr>
           {% with messages = get_flashed_messages() %}
           {% if messages %}
